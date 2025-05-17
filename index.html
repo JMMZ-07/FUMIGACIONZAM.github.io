@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FUMIGACIÓN ZAM | Inicio</title>
+  <style>
+    /* Estilos generales */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #fffaf0; /* Fondo crema claro */
+      color: #333;
+    }
+
+    header {
+      background-color: #8b6f47;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #d4af37;
+    }
+
+    .hero {
+      background: url('https://via.placeholder.com/1200x400 ') no-repeat center center / cover;
+      color: white;
+      text-align: center;
+      padding: 120px 20px 100px;
+      position: relative;
+      animation: fadeIn 2s ease-in-out; /* Animación de entrada */
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(139, 111, 71, 0.7);
+      z-index: 1;
+    }
+
+    .hero > div {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      animation: slideIn 1.5s ease-in-out; /* Animación de deslizamiento */
+    }
+
+    .hero button {
+      padding: 12px 24px;
+      font-size: 1em;
+      background-color: #d4af37;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: popIn 1.5s ease-in-out; /* Animación de aparición */
+    }
+
+    .hero button:hover {
+      background-color: #c19a00;
+      transform: scale(1.1); /* Efecto de escala al hacer hover */
+    }
+
+    footer {
+      background-color: #f5e6da;
+      color: #555;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>FUMIGACIÓN ZAM</strong></div>
+    <nav>
+      <a href="servicios.html">Servicios</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div>
+      <h1>Bienvenido a Fumigación ZAM</h1>
+      <button onclick="location.href='conocenos.html'">Conócenos</button>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 FUMIGACIÓN ZAM. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
