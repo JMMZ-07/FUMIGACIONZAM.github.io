@@ -1,124 +1,135 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <style>
-        /* Estilos generales */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            background-color: #7B68EE; /* Azul maya */
-            color: white;
-            padding: 15px 40px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .logo {
-            margin-right: 20px;
-        }
-        .logo img {
-            max-height: 60px; /* Aumentamos el tamaño del logo */
-        }
-        nav {
-            flex-grow: 1;
-            text-align: right;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-        nav a:hover {
-            color: #008080; /* Verde agua */
-        }
-        .container {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 3rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            animation: slideIn 1.5s ease-in-out; /* Animación para el título */
-        }
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #555;
-        }
-        .button {
-            display: inline-block;
-            margin: 15px;
-            padding: 12px 25px;
-            background-color: #008080; /* Verde agua */
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-        .button:hover {
-            background-color: #16a085;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #7B68EE; /* Azul maya */
-            color: white;
-            margin-top: 50px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUMIGACIÓN ZAM | Inicio</title>
+  <style>
+    /* Estilos generales */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Animaciones */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-    </style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #e6f7ff; /* Azul maya claro */
+      color: #333;
+    }
+
+    header {
+      background-color: #45b7b1; /* Verde agua */
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #d4af37;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #e6f7ff; /* Azul maya claro */
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      animation: fadeIn 1.5s ease-in-out; /* Animación para los títulos */
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 15px;
+      padding: 12px 25px;
+      background-color: #45b7b1; /* Verde agua */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #3498db; /* Azul maya más oscuro */
+    }
+
+    footer {
+      background-color: #45b7b1; /* Verde agua */
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="prepa.png" alt="Logo">
-        </div>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="profesor.html">Profesor</a>
-            <a href="creador.html">Creador</a>
-        </nav>
-    </header>
-    <div class="container">
-        <h1>Bienvenido a la Página Web</h1>
-        <p>Explora más sobre el profesor y los creadores a través de los siguientes enlaces.</p>
-        <a href="profesor.html" class="button">Información del Profesor</a>
-        <a href="creador.html" class="button">Información de los Creadores</a>
-    </div>
-    <footer>
-        &copy; 2025 Todos los derechos reservados.
-    </footer>
+  <header>
+    <div><strong>FUMIGACIÓN ZAM</strong></div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="conocenos.html">Conócenos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="container" id="inicio">
+    <h1>Bienvenido a Fumigación ZAM</h1>
+    <p>Ofrecemos soluciones profesionales para el control de plagas en distintos entornos.</p>
+    <a href="conocenos.html" class="button">Explora nuestros Servicios</a>
+  </section>
+
+  <footer>
+    © 2025 FUMIGACIÓN ZAM. Todos los derechos reservados.
+  </footer>
 </body>
 </html>
