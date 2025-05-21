@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FUMIGACIÓN ZAM | Servicios</title>
   <style>
     /* Estilos generales */
@@ -13,14 +13,15 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       line-height: 1.6;
-      background-color: #e6f7ff; /* Azul maya claro */
+      background-color: #eaf8f6; /* Muy claro para fondo base */
       color: #333;
+      overflow-x: hidden;
     }
 
     header {
-      background-color: #45b7b1; /* Verde agua */
+      background-color: #4bb5a1;
       color: white;
       padding: 15px 40px;
       display: flex;
@@ -38,7 +39,7 @@
     }
 
     nav a:hover {
-      color: #d4af37;
+      color: #d0f0ea;
     }
 
     .section {
@@ -46,16 +47,22 @@
       margin: auto;
       padding: 60px 20px;
       text-align: center;
-      background-color: #fdf6ec;
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
+      background-color: #f0fcfb;
+      border-top: 1px solid #cdeee8;
+      border-bottom: 1px solid #cdeee8;
+      animation: slideFromLeft 0.8s ease;
     }
 
     .section h2 {
       font-size: 2em;
+      margin-bottom: 20px;
+      color: #4bb5a1;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      color: #555;
       margin-bottom: 40px;
-      color: #8b6f47;
-      animation: fadeIn 1.5s ease-in-out; /* Animación para los títulos */
     }
 
     .services {
@@ -73,7 +80,6 @@
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: slideIn 1.5s ease-in-out; /* Animación para las tarjetas de servicios */
     }
 
     .service:hover {
@@ -83,13 +89,17 @@
 
     .service h3 {
       margin-bottom: 10px;
-      color: #8b6f47;
+      color: #5fbcd2;
       transition: color 0.3s ease;
     }
 
-    footer {
-      background-color: #f5e6da;
+    .service p {
       color: #555;
+    }
+
+    footer {
+      background-color: #5fbcd2;
+      color: white;
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
@@ -97,23 +107,30 @@
     }
 
     /* Animaciones */
-    @keyframes fadeIn {
+    @keyframes slideFromLeft {
       from {
+        transform: translateX(-100%);
         opacity: 0;
       }
       to {
+        transform: translateX(0);
         opacity: 1;
       }
     }
 
-    @keyframes slideIn {
+    /* Transición para cambio de página */
+    .fade-out {
+      animation: slideToLeft 0.6s ease forwards;
+    }
+
+    @keyframes slideToLeft {
       from {
-        transform: translateY(-50px);
-        opacity: 0;
+        transform: translateX(0);
+        opacity: 1;
       }
       to {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateX(-100%);
+        opacity: 0;
       }
     }
   </style>
@@ -122,9 +139,9 @@
   <header>
     <div><strong>FUMIGACIÓN ZAM</strong></div>
     <nav>
-      <a href="index.html">Inicio</a>
-      <a href="conocenos.html">Conócenos</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="conocenos.html" class="nav-link">Conócenos</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
     </nav>
   </header>
 
@@ -134,17 +151,17 @@
     <div class="services">
       <div class="service">
         <h3>Fumigación Residencial</h3>
-        <p>Eliminamos plagas en casas y departamentos con productos seguros y eficaces. Nuestro equipo está capacitado para identificar y resolver problemas específicos de plagas en hogares.</p>
+        <p>Eliminamos plagas en casas y departamentos con productos seguros y eficaces.</p>
         <p><strong>Beneficios:</strong> Protección completa, métodos personalizados, garantía de satisfacción.</p>
       </div>
       <div class="service">
         <h3>Fumigación Comercial</h3>
-        <p>Soluciones integrales para empresas, oficinas y locales comerciales. Nos aseguramos de que tu negocio esté libre de plagas para mantener un entorno seguro y productivo.</p>
+        <p>Soluciones integrales para empresas, oficinas y locales comerciales.</p>
         <p><strong>Beneficios:</strong> Cumplimiento normativo, inspecciones regulares, mínima interrupción operativa.</p>
       </div>
       <div class="service">
         <h3>Control de Plagas</h3>
-        <p>Prevención y control continuo para mantener tu espacio libre de insectos y roedores. Implementamos planes de acción a largo plazo para evitar la reaparición de plagas.</p>
+        <p>Prevención y control continuo para mantener tu espacio libre de insectos y roedores.</p>
         <p><strong>Beneficios:</strong> Monitoreo constante, uso de productos ecológicos, asesoramiento profesional.</p>
       </div>
     </div>
@@ -153,5 +170,21 @@
   <footer>
     © 2025 FUMIGACIÓN ZAM. Todos los derechos reservados.
   </footer>
+
+  <!-- Script de transición de páginas -->
+  <script>
+    const links = document.querySelectorAll('.nav-link');
+
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetUrl = this.getAttribute('href');
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 600); // Duración de la animación
+      });
+    });
+  </script>
 </body>
 </html>
