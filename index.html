@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FUMIGACIÓN ZAM | Inicio</title>
   <style>
     /* Estilos generales */
@@ -13,14 +13,15 @@
     }
 
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      background-color: #fffaf0; /* Fondo crema claro */
+      background-color: #e6f7ff; /* Azul maya claro */
       color: #333;
+      overflow-x: hidden;
     }
 
     header {
-      background-color: #8b6f47;
+      background-color: #45b7b1; /* Verde agua */
       color: white;
       padding: 15px 40px;
       display: flex;
@@ -41,54 +42,48 @@
       color: #d4af37;
     }
 
-    .hero {
-      background: url('https://via.placeholder.com/1200x400 ') no-repeat center center / cover;
-      color: white;
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
       text-align: center;
-      padding: 120px 20px 100px;
-      position: relative;
-      animation: fadeIn 2s ease-in-out; /* Animación de entrada */
+      background-color: #e6f7ff; /* Azul maya claro */
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
     }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(139, 111, 71, 0.7);
-      z-index: 1;
-    }
-
-    .hero > div {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h1 {
-      font-size: 3em;
+    h1 {
+      font-size: 3rem;
+      color: #2c3e50;
       margin-bottom: 20px;
-      animation: slideIn 1.5s ease-in-out; /* Animación de deslizamiento */
+      animation: fadeIn 1.5s ease-in-out;
     }
 
-    .hero button {
-      padding: 12px 24px;
-      font-size: 1em;
-      background-color: #d4af37;
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 15px;
+      padding: 12px 25px;
+      background-color: #45b7b1; /* Verde agua */
       color: white;
-      border: none;
+      text-decoration: none;
       border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      animation: popIn 1.5s ease-in-out; /* Animación de aparición */
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
     }
 
-    .hero button:hover {
-      background-color: #c19a00;
-      transform: scale(1.1); /* Efecto de escala al hacer hover */
+    .button:hover {
+      background-color: #3498db; /* Azul maya más oscuro */
     }
 
     footer {
-      background-color: #f5e6da;
-      color: #555;
+      background-color: #45b7b1;
+      color: white;
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
@@ -97,34 +92,38 @@
 
     /* Animaciones */
     @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInFromRight {
       from {
+        transform: translateX(100%);
         opacity: 0;
       }
       to {
+        transform: translateX(0);
         opacity: 1;
       }
     }
 
-    @keyframes slideIn {
+    @keyframes slideOutToLeft {
       from {
-        transform: translateY(-50px);
-        opacity: 0;
+        transform: translateX(0);
+        opacity: 1;
       }
       to {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateX(-100%);
+        opacity: 0;
       }
     }
 
-    @keyframes popIn {
-      from {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+    .page-enter {
+      animation: slideInFromRight 0.5s forwards;
+    }
+
+    .page-exit {
+      animation: slideOutToLeft 0.5s forwards;
     }
   </style>
 </head>
@@ -137,15 +136,37 @@
     </nav>
   </header>
 
-  <section class="hero" id="inicio">
-    <div>
-      <h1>Bienvenido a Fumigación ZAM</h1>
-      <button onclick="location.href='conocenos.html'">Conócenos</button>
-    </div>
+  <section class="container" id="inicio">
+    <h1>Bienvenido a Fumigación ZAM</h1>
+    <p>Ofrecemos soluciones profesionales para el control de plagas en distintos entornos.</p>
+    <a href="conocenos.html" class="button">Conócenos</a>
   </section>
 
   <footer>
     © 2025 FUMIGACIÓN ZAM. Todos los derechos reservados.
   </footer>
+
+  <!-- Script para animaciones de transición -->
+  <script>
+    // Animación de entrada al cargar la página
+    document.body.classList.add('page-enter');
+
+    // Detectar clics en enlaces internos y aplicar animación de salida
+    document.querySelectorAll('a[href]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        const url = this.getAttribute('href');
+        // Ignorar anclas y enlaces externos
+        if (url && !url.startsWith('#') && !url.startsWith('mailto:') && !url.startsWith('tel:')) {
+          e.preventDefault();
+          document.body.classList.remove('page-enter');
+          document.body.classList.add('page-exit');
+
+          setTimeout(() => {
+            window.location.href = url;
+          }, 500); // Coincide con la duración de la animación
+        }
+      });
+    });
+  </script>
 </body>
 </html>
