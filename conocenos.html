@@ -17,6 +17,7 @@
       line-height: 1.6;
       background-color: #e6f7ff; /* Azul maya claro */
       color: #333;
+      overflow-x: hidden;
     }
 
     header {
@@ -46,16 +47,14 @@
       margin: auto;
       padding: 60px 20px;
       text-align: center;
-      background-color: #fdf6ec;
+      background-color: #e6f7ff;
       border-top: 1px solid #eee;
       border-bottom: 1px solid #eee;
     }
 
-    .section h2 {
-      font-size: 2em;
-      margin-bottom: 40px;
-      color: #8b6f47;
-      animation: fadeIn 1.5s ease-in-out; /* Animación para los títulos */
+    .section h2, .section h3 {
+      color: #2c3e50;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
     .section p {
@@ -79,15 +78,14 @@
     }
 
     footer {
-      background-color: #f5e6da;
-      color: #555;
+      background-color: #45b7b1;
+      color: white;
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
       border-top: 1px solid #ddd;
     }
 
-    /* Estilos para la tabla de imágenes */
     table {
       width: 100%;
       margin-top: 40px;
@@ -100,7 +98,7 @@
     }
 
     td img {
-      max-width: 200px; /* Tamaño máximo de las imágenes */
+      max-width: 200px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -108,28 +106,43 @@
     }
 
     td img:hover {
-      transform: scale(1.1); /* Efecto de zoom al hacer hover */
+      transform: scale(1.1);
     }
 
     /* Animaciones */
     @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInFromRight {
       from {
+        transform: translateX(100%);
         opacity: 0;
       }
       to {
+        transform: translateX(0);
         opacity: 1;
       }
     }
 
-    @keyframes slideIn {
+    @keyframes slideOutToLeft {
       from {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
       }
+      to {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+    }
+
+    .page-enter {
+      animation: slideInFromRight 0.5s forwards;
+    }
+
+    .page-exit {
+      animation: slideOutToLeft 0.5s forwards;
     }
   </style>
 </head>
@@ -162,9 +175,8 @@
     </ul>
 
     <h3>Historia</h3>
-    <p>FUMIGACIÓN ZAM fue fundada en 2023 por un grupo de expertos en control de plagas. Desde entonces, hemos crecido gracias a nuestro compromiso con la excelencia y la satisfacción del cliente. Hoy en día, atendemos tanto a clientes residenciales como comerciales en todo el país.</p>
+    <p>FUMIGACIÓN ZAM fue fundada en 2010 por un grupo de expertos en control de plagas. Desde entonces, hemos crecido gracias a nuestro compromiso con la excelencia y la satisfacción del cliente. Hoy en día, atendemos tanto a clientes residenciales como comerciales en todo el país.</p>
 
-    <!-- Tabla de Imágenes -->
     <table>
       <tr>
         <td><img src="fum3.png" alt="Imagen de Fumigación 1"></td>
@@ -177,5 +189,24 @@
   <footer>
     © 2025 FUMIGACIÓN ZAM. Todos los derechos reservados.
   </footer>
+
+  <!-- Script para transiciones de página -->
+  <script>
+    document.body.classList.add('page-enter');
+
+    document.querySelectorAll('a[href]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        const url = this.getAttribute('href');
+        if (url && !url.startsWith('#') && !url.startsWith('mailto:') && !url.startsWith('tel:')) {
+          e.preventDefault();
+          document.body.classList.remove('page-enter');
+          document.body.classList.add('page-exit');
+          setTimeout(() => {
+            window.location.href = url;
+          }, 500); // debe coincidir con la duración de la animación
+        }
+      });
+    });
+  </script>
 </body>
 </html>
